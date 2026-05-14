@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import model.Clinic;
+import model.Doctor;
 
 public class Main {
     public static void main(String[] args){
@@ -27,6 +28,11 @@ public class Main {
             System.out.println("12. Delete a client/animal/employee");
             System.out.println("13. Exit");
             System.out.println();
+
+//            System.out.println();
+//            Doctor doc = new  Doctor("Andrei", "Preda", "a", "g", 5.00, "ferf", "65464");
+//            System.out.println(doc);
+//            System.out.println();
 
             Scanner sc = new Scanner(System.in);
             System.out.println("Please introduce your action: ");

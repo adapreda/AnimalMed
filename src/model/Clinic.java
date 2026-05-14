@@ -1,10 +1,8 @@
 package model;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.io.File;
-import java.util.Scanner;
 
 public class Clinic {
     // this will be the service class
@@ -17,6 +15,7 @@ public class Clinic {
 
     private List<Employee> ListEmployees;
     private List<Client> ListClients;
+    private List<MedicalService> ListMedicalServices;
 
     private String load_password() {
 
@@ -40,6 +39,8 @@ public class Clinic {
 
         this.ListEmployees = new ArrayList<>();
         this.ListClients = new ArrayList<>();
+        this.ListMedicalServices = new ArrayList<>();
+
     }
 
     public static Clinic getInstance(){
