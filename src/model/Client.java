@@ -1,6 +1,7 @@
 package model;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Client {
 
@@ -20,7 +21,19 @@ public class Client {
         this.ClientLastName = ClientLastName;
         this.ClientEmail = ClientEmail;
         this.ClientPhone = ClientPhone;
-        this.ClientAnimals = animals;
+        if (animals != null) {
+            this.ClientAnimals = animals;
+        } else {
+            this.ClientAnimals = new ArrayList<>();
+        }
+    }
+
+    public Client(String ClientFirstName, String ClientLastName, String ClientEmail, String ClientPhone) {
+        this.ClientID = ++CounterID;
+        this.ClientFirstName = ClientFirstName;
+        this.ClientLastName = ClientLastName;
+        this.ClientEmail = ClientEmail;
+        this.ClientPhone = ClientPhone;
     }
 
     public String getClientFirstName() {
@@ -41,6 +54,12 @@ public class Client {
 
     public List<Animals> getClientAnimals() {
         return ClientAnimals;
+    }
+
+    public void addAnimal(Animals animal) {
+        if(animal != null) {
+            ClientAnimals.add(animal);
+        }
     }
 
     @Override

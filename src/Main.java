@@ -1,11 +1,15 @@
 import java.util.Scanner;
+
+import model.Client;
 import model.Clinic;
 import model.Doctor;
+import service.ClinicService;
 
 public class Main {
     public static void main(String[] args){
 
         Clinic clinic = Clinic.getInstance();
+        ClinicService clinicService = new ClinicService();
 
         while(true){
             System.out.println();
@@ -40,7 +44,16 @@ public class Main {
 
             switch (choice){
                 case 1: {
-                    System.out.println("pasul 1");
+                    System.out.println("Adaugare - 1 / Modificare - 2");
+                    int opt = sc.nextInt();
+                    if(opt == 1){
+                        System.out.println("Va rugam introduceti: ");
+                        System.out.println("Nume: ");
+                        String name = sc.next();
+
+                        clinicService.addClient("IOn", name, "email", "tel");
+                        clinicService.getClients();
+                    }
                     break;
                 }
                 case 2: {

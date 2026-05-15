@@ -1,6 +1,7 @@
 package model;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class MedicalRecord {
 
@@ -11,7 +12,10 @@ public class MedicalRecord {
     public MedicalRecord(Animals animal, Client client,  List<Event> events) {
         this.Animal = animal;
         this.client = client;
-        this.Events = events;
+        this.Events = events != null ? events : new ArrayList<>();
+        if(this.Animal != null) {
+            this.Animal.setMedRecord(this);
+        }
     }
 
     public Animals getAnimal() {
@@ -24,6 +28,12 @@ public class MedicalRecord {
 
     public List<Event> getEvents() {
         return Events;
+    }
+
+    public void addEvent(Event event) {
+        if(event != null) {
+            Events.add(event);
+        }
     }
 
     @Override
