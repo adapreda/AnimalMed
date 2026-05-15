@@ -31,12 +31,20 @@ public class Animals {
         this.AnimalWeight = animalWeight;
     }
 
+    public Animals(Client owner, String animalName, String animalSpecies, int animalAge, double animalWeight) {
+        this(owner, null, animalName, animalSpecies, animalAge, animalWeight);
+    }
+
     public Client getOwner() {
         return Owner;
     }
 
     public MedicalRecord getMedRecord() {
         return MedRecord;
+    }
+
+    public void setMedRecord(MedicalRecord medRecord) {
+        this.MedRecord = medRecord;
     }
 
     public String getAnimalName() {
@@ -57,7 +65,7 @@ public class Animals {
 
     @Override
     public String toString() {
-        return AnimalID + " " + AnimalName + " " + Owner + " " + AnimalSpecies + " " + AnimalAge + " " + AnimalWeight + " \n" + MedRecord.toString();
+        return AnimalID + " " + AnimalName + " " + AnimalSpecies + " " + AnimalAge + " " + AnimalWeight;
     }
 }
 

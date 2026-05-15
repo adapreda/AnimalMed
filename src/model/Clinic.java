@@ -69,4 +69,58 @@ public class Clinic {
     public String getClinicEmail() {
         return ClinicEmail;
     }
+
+    public String getAdminPassword() {
+        return AdminPassword;
+    }
+
+    public List<Employee> getListEmployees() {
+        return ListEmployees;
+    }
+
+    public List<Client> getListClients() {
+        return ListClients;
+    }
+
+    public List<MedicalService> getListMedicalServices() {
+        return ListMedicalServices;
+    }
+
+    public void addEmployee(Employee employee) {
+        if(employee != null) {
+            ListEmployees.add(employee);
+        }
+    }
+
+    public void addClient(Client client) {
+        if(client != null) {
+            ListClients.add(client);
+        }
+    }
+
+    public void addMedicalService(MedicalService medicalService) {
+        if(medicalService != null) {
+            ListMedicalServices.add(medicalService);
+        }
+    }
+
+    public List<Doctor> getDoctors() {
+        List<Doctor> doctors = new ArrayList<>();
+        for(Employee employee : ListEmployees) {
+            if(employee instanceof Doctor) {
+                doctors.add((Doctor) employee);
+            }
+        }
+        return doctors;
+    }
+
+    public List<Nurse> getNurses() {
+        List<Nurse> nurses = new ArrayList<>();
+        for(Employee employee : ListEmployees) {
+            if(employee instanceof Nurse) {
+                nurses.add((Nurse) employee);
+            }
+        }
+        return nurses;
+    }
 }
