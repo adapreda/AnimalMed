@@ -5,8 +5,22 @@ import model.Clinic;
 import model.Doctor;
 import service.ClinicService;
 
+import db.DatabaseConnection;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+
 public class Main {
     public static void main(String[] args){
+
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            System.out.println("Connected to database successfully!");
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Database connection failed!");
+            System.out.println(e.getMessage());
+        }
 
         Clinic clinic = Clinic.getInstance();
         ClinicService clinicService = new ClinicService();
