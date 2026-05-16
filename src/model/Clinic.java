@@ -7,6 +7,7 @@ import java.io.File;
 public class Clinic {
     // this will be the service class
     private static Clinic instance;
+    private final int ClinicID;
     private final String ClinicName;
     private final String ClinicAddress;
     private final String ClinicPhone;
@@ -31,6 +32,7 @@ public class Clinic {
     }
 
     private Clinic(){
+        this.ClinicID = 1;
         this.ClinicName = "AnimalMed";
         this.ClinicAddress = "Paw's Street";
         this.ClinicPhone = "555-555-555";
@@ -56,6 +58,10 @@ public class Clinic {
 
     public String getClinicName() {
         return ClinicName;
+    }
+
+    public int getClinicID() {
+        return ClinicID;
     }
 
     public String getClinicAddress() {

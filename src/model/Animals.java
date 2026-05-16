@@ -2,8 +2,11 @@ package model;
 
 public class Animals {
 
+    private static int CounterID = 0;
+
     private Client Owner;
     private MedicalRecord MedRecord;
+    private final int AnimalDbID;
     private String AnimalID;
     private String AnimalName;
     private String AnimalSpecies;
@@ -22,6 +25,7 @@ public class Animals {
     }
 
     public Animals(Client owner, MedicalRecord record, String animalName, String animalSpecies, int animalAge, double animalWeight) {
+        this.AnimalDbID = ++CounterID;
         this.Owner = owner;
         this.MedRecord = record;
         this.AnimalID = generateRandomNumber();
@@ -37,6 +41,14 @@ public class Animals {
 
     public Client getOwner() {
         return Owner;
+    }
+
+    public int getAnimalDbID() {
+        return AnimalDbID;
+    }
+
+    public int getClientID() {
+        return Owner != null ? Owner.getClientID() : 0;
     }
 
     public MedicalRecord getMedRecord() {

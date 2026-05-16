@@ -6,10 +6,12 @@ import java.util.ArrayList;
 public class MedicalService {
     private static int CounterID = 0;
     protected final int MedicalServiceID;
+    protected final int ClinicID;
 
     protected String ServiceName;
     protected double ServicePrice;
     protected int ServiceDuration;    // minutes
+    protected String ServiceType;
     protected boolean HasPrescription;
     protected List<Prescription> Prescriptions;
 
@@ -20,15 +22,19 @@ public class MedicalService {
             throw new IllegalArgumentException("A medical service must have a payment.");
         }
         this.MedicalServiceID = ++CounterID;
+        this.ClinicID = Clinic.getInstance().getClinicID();
         this.ServiceName = ServiceName;
         this.ServicePrice = ServicePrice;
         this.ServiceDuration = ServiceDuration;
+        this.ServiceType = getClass().getSimpleName().toUpperCase();
         this.Prescriptions = new ArrayList<>();
         if(Prescriptions != null && !Prescriptions.isEmpty()) {
             this.Prescriptions.add(Prescriptions.get(0));
+            this.Prescriptions.get(0).setMedicalServiceID(this.MedicalServiceID);
         }
         this.HasPrescription = !this.Prescriptions.isEmpty();
         this.ServicePayment = ServicePayment;
+        this.ServicePayment.setMedicalServiceID(this.MedicalServiceID);
     }
 
     @Override
@@ -40,12 +46,25 @@ public class MedicalService {
         return ServiceName;
     }
 
+    public int getMedicalServiceID() {
+        return MedicalServiceID;
+    }
+
+    public int getClinicID() {
+        return ClinicID;
+    }
+
+
     public double getServicePrice() {
         return ServicePrice;
     }
 
     public int getServiceDuration() {
         return ServiceDuration;
+    }
+
+    public String getServiceType() {
+        return ServiceType;
     }
 
     public boolean isHasPrescription() {
@@ -64,6 +83,7 @@ public class MedicalService {
         Prescriptions.clear();
         if(prescription != null) {
             Prescriptions.add(prescription);
+            prescription.setMedicalServiceID(this.MedicalServiceID);
         }
         HasPrescription = prescription != null;
     }
