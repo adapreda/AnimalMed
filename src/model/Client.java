@@ -8,6 +8,7 @@ public class Client {
     private static int CounterID = 0;
 
     private final int ClientID;
+    private final int ClinicID;
     private String ClientFirstName;
     private String ClientLastName;
     private String ClientEmail;
@@ -17,6 +18,7 @@ public class Client {
 
     public Client(String ClientFirstName, String ClientLastName, String ClientEmail, String ClientPhone, List<Animals> animals) {
         this.ClientID = ++CounterID;
+        this.ClinicID = Clinic.getInstance().getClinicID();
         this.ClientFirstName = ClientFirstName;
         this.ClientLastName = ClientLastName;
         this.ClientEmail = ClientEmail;
@@ -30,10 +32,20 @@ public class Client {
 
     public Client(String ClientFirstName, String ClientLastName, String ClientEmail, String ClientPhone) {
         this.ClientID = ++CounterID;
+        this.ClinicID = Clinic.getInstance().getClinicID();
         this.ClientFirstName = ClientFirstName;
         this.ClientLastName = ClientLastName;
         this.ClientEmail = ClientEmail;
         this.ClientPhone = ClientPhone;
+        this.ClientAnimals = new ArrayList<>();
+    }
+
+    public int getClientID() {
+        return ClientID;
+    }
+
+    public int getClinicID() {
+        return ClinicID;
     }
 
     public String getClientFirstName() {
